@@ -28,7 +28,7 @@ module.exports.createCampground=async(req,res,next)=>{
      campground.geometry=geoData.body.features[0].geometry;
     campground.images=req.files.map(f=>({url:f.path, filename:f.filename}));
     campground.author=req.user._id;
-    console.log(campground);
+    
     await campground.save();
     req.flash('success','you have sucessfully made a campground');
     res.redirect(`/Campground/${campground._id}`); 
