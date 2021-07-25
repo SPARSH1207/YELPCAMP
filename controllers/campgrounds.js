@@ -7,7 +7,7 @@ const {cloudinary}=require('../cloudinary');
 const geocoder=mbxGeocoding({accessToken:mapBoxToken});
 
 module.exports.index=async(req,res)=>{
-    res.send('hello');
+    
     const campgrounds=await Campground.find({});
     res.render('campgrounds/index',{campgrounds});
 }
