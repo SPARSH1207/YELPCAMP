@@ -13,7 +13,7 @@ module.exports.creatReview=async(req,res)=>{
     await review.save();
     await campground.save();
 
-    req.flash('success','Review successfully created');
+    req.flash('success','Question successfully posted');
     res.redirect(`/Campground/${campground._id}`);
 
    

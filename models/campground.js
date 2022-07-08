@@ -12,6 +12,7 @@ imageSchema.virtual('thumbnail').get(function(){
 const opts={toJSON:{virtuals:true}};
 const CampgroundSchema=new Schema({
     title:String ,
+    email:String ,
     images:[imageSchema],
     geometry:{
         type:{

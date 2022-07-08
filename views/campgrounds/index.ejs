@@ -1,15 +1,47 @@
 <% layout('layout/boilerplate')%>
-<div id="cluster-map"></div>
-    <h1>ALL CAMPGROUNDS </h1>
-    <a href="/Campground/new">Add Campground</a>
-    <ul>
+
+<div class="jumbotron text-white">
+    
+    <p>
+        <div class="container">
+            <div class="row">
+                <h1 class="display-4">Welcome to DTUSTORE</h1><br>
+                
+                <p>Everthing at one place !</p><br>
+                
+                        <form class="form-inline " action="/Campground" method="get">
+                            <div class="col-md-8">
+                                <input type="text" name="search" placeholder="Item Search......" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        
+                        </form>       
+                    <div class ="col-md-12">
+                        <% if(noMatch!==undefined) { %>
+                            <h3><%= noMatch %></h3>
+                            <% } %>
+                    </div>  
+            </div>
+        </div>
+        
+    </p>
+    <div>
+    </div>  
+    </div>
+    <div class="nine">
+        <h1>All Items</h1>
+      </div>
+ 
+     <ul>
         <% for(let campground of campgrounds) {%>
            <div class="card mb-3">
                <div class="row">
                    <div class="col-md-4">
                       <% if(campground.images.length) { %>
 
-                      <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
+                      <img class="photo" alt="" src="<%=campground.images[0].url%>">
                    <% } else { %>
                     <img class="img-fluid" alt="" src="https://res.cloudinary.com/dgsqkv8do/image/upload/v1626461665/YELPCAMP/nvrdmv0ia7vx434rjdir.jpg">
                     <%}%>
@@ -23,15 +55,19 @@
                        <p class="card-body">
                            <small class="text-muted"><%=campground.location%></small>
                         </p>
-                        <a class="btn btn-primary" href="/Campground/<%=campground._id%>">view <%=campground.title%></a>
+                        <div class="control">
+                            <a class="" href="/Campground/<%=campground._id%>">
+                            <button class="btn1">
+                             <span class="price">&#8377;<%=campground.price%></span>
+                           <span class="buy">View <%=campground.title%></span>
+                         </button>
+                        </a>
+                        </div>
+                        
                    </div>
                 </div>
                </div>
            </div>
             <% }%>
     </ul>
-    <script>
-        const mapToken='<%=process.env.MAPBOX_TOKEN%>';
-       const campgrounds={features:<%- JSON.stringify(campgrounds)%>}
-      </script>
-    <script src="/javascripts/clusterMap.js"></script>
+    

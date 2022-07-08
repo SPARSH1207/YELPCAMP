@@ -12,7 +12,7 @@ module.exports.register=async(req,res,next)=>{
     console.log(registeredUser);
     req.login(registeredUser,err=>{
         if(err) return next(err);
-        req.flash('success','Welcome to Yelpcamp');
+        req.flash('success','Welcome to DTUSTORE');
         res.redirect('/Campground');
 
 
